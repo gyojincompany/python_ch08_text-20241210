@@ -41,6 +41,7 @@ print(all_files_data_concat)
 all_title = all_files_data_concat["제목"]
 print(all_title)
 
+# 만들어진 엑셀파일을 전처리 시작
 stopWords = set(stopwords.words("english"))  # 영어 불용어 묶음
 lemma = WordNetLemmatizer()  # 표제어 추출을 위한 객체
 
@@ -62,12 +63,12 @@ for title in all_title:
 words2 = list(reduce(lambda x, y: x+y, words))
 # print(words2)
 
-count = Counter(words2)
+count = Counter(words2)  # 빈도수 분석
 print(count)
 
 word_count = dict()
 
-for tag, counts in count.most_common(50):
+for tag, counts in count.most_common(50):  # 상위 50위 빈도수만 추출
     if(len(tag)>1):  # 단어의 길이가 1보다 큰 단어만 추출
         word_count[tag] = counts
 
